@@ -52,7 +52,7 @@ export const getPostsByUser = async ({ userId }: { userId: number }) => {
       },
     });
 
-    return data as Post;
+    return data as Post[];
   } catch (error) {
     throw new Error(SOMETING_WENT_WRONG);
   }

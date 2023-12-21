@@ -1,15 +1,15 @@
 "use client";
-import { usePostsOptions } from "@/hooks/usePostsQuery";
+import { usePostsQuery } from "@/hooks";
 
 export default function Home() {
-  const { posts, fetchNextPage, hasNextPage } = usePostsOptions();
+  const { posts, fetchNextPage, hasNextPage } = usePostsQuery();
 
   const handleClick = () => {
     fetchNextPage();
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center p-24">
       <h1 className="text-3xl">Blog JsonPlaceholder</h1>
 
       <ol className="my-4">

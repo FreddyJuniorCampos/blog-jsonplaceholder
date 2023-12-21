@@ -1,6 +1,10 @@
-import { QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
+import {
+  QueryFunctionContext,
+  useInfiniteQuery,
+  useQuery,
+} from "@tanstack/react-query";
 
-import { getPosts } from "@/lib/posts";
+import { getPostById, getPosts, getPostsByUser } from "@/lib/posts";
 
 const DEFAULT_PAGE_LIMIT = 10;
 const DEFAULT_INITIAL_PAGE = 1;
@@ -15,7 +19,7 @@ const fetchPosts = async ({
   });
 };
 
-export const usePostsOptions = () => {
+export const usePostsQuery = () => {
   const query = useInfiniteQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
@@ -42,4 +46,28 @@ export const usePostsOptions = () => {
     ...query,
     posts: query?.data?.pages?.posts ?? [],
   };
+};
+
+export const usePostQuery = (id: number) => {
+  const query = useQuery({
+    queryKey: [id],
+    queryFn: () => getPostById({ id }),
+    retry: false,
+    enabled: !!id,
+    refetchOnWindowFocus: false,
+  });
+
+  return { ...query };
+};
+
+export const usePostByUserQuery = (userId: number) => {
+  const query = useQuery({
+    queryKey: [userId],
+    queryFn: () => getPostsByUser({ userId }),
+    retry: false,
+    enabled: !!userId,
+    refetchOnWindowFocus: false,
+  });
+
+  return { ...query };
 };
