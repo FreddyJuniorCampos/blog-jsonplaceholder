@@ -8,6 +8,7 @@ import { red } from "@mui/material/colors";
 import { Box, Button } from "@mui/material";
 import { Post } from "@/interfaces/posts";
 import { CommentsSection } from "../Sections";
+import { PostActions } from "../SmallComponents";
 
 // Variants of Card
 const VARIANTS_CARD = {
@@ -21,7 +22,11 @@ interface PostCardProps {
   handleLearnMore?: () => void;
 }
 
-export const PostCard = ({ handleLearnMore, post, variant }: PostCardProps) => {
+export const PostCard = ({
+  handleLearnMore,
+  post,
+  variant = "DEFAULT",
+}: PostCardProps) => {
   // Post data
   const { body, title, comments } = post;
 
@@ -45,8 +50,10 @@ export const PostCard = ({ handleLearnMore, post, variant }: PostCardProps) => {
         <Typography variant="body2">{body}</Typography>
       </CardContent>
 
+      <PostActions />
+
       <CardActions disableSpacing>
-        {variant === "DEFAULT" && !handleLearnMore && (
+        {variant === "DEFAULT" && handleLearnMore && (
           <Button size="small" onClick={handleLearnMore}>
             Learn More
           </Button>

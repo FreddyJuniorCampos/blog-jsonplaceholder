@@ -25,6 +25,7 @@ export default function Home() {
       <Grid container py={6}>
         {posts?.map((post) => (
           <Grid
+            item
             xs={12}
             sm={6}
             md={4}

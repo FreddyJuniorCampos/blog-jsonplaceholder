@@ -7,6 +7,7 @@ import { red } from "@mui/material/colors";
 import { Box } from "@mui/material";
 
 import { Comment } from "@/interfaces/comments";
+import { PostActions } from "../SmallComponents";
 
 interface CommentsSectionProps {
   comments: Comment[];
@@ -37,6 +38,8 @@ const Comment = ({ comment }: CommentProps) => {
       <CardContent>
         <Typography variant="body2">{body}</Typography>
       </CardContent>
+
+      <PostActions variant="COMMENT" />
     </Box>
   );
 };
