@@ -1,7 +1,16 @@
 "use client";
+import { useRouter } from "next/navigation";
+
+import { Grid } from "@mui/material";
+
+import { PostCard } from "@/components/Cards";
 import { usePostsQuery } from "@/hooks";
 
 export default function Home() {
+  // Router
+  const router = useRouter();
+
+  // Queries
   const { posts, fetchNextPage, hasNextPage } = usePostsQuery();
 
   const handleClick = () => {
@@ -9,16 +18,29 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <main className="flex min-h-screen flex-col items-center p-2 justify-center">
       <h1 className="text-3xl">Blog JsonPlaceholder</h1>
 
-      <ol className="my-4">
-        {posts?.map((item) => (
-          <li key={item.id} className="py-1">
-            {item.id}: {item.title}
-          </li>
+      <Grid container py={6}>
+        {posts?.map((post) => (
+          <Grid
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            p={1}
+            key={post.id}
+            className="flex justify-center w-full"
+          >
+            <PostCard
+              post={post}
+              handleLearnMore={() => {
+                router.push(`posts/${post.id}`);
+              }}
+            />
+          </Grid>
         ))}
-      </ol>
+      </Grid>
 
       <button
         className="bg-blue-500 px-4 py-2 rounded-sm hover:opacity-90 disabled:bg-gray-500 disabled:cursor-not-allowed disabled:opacity-100"
