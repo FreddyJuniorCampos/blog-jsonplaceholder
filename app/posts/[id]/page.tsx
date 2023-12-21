@@ -2,6 +2,7 @@
 import { useParams } from "next/navigation";
 
 import { usePostQuery } from "@/hooks";
+import { PostCard } from "@/components/Cards";
 
 export default function Post() {
   // Router
@@ -13,16 +14,10 @@ export default function Post() {
   );
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <main className="flex min-h-screen flex-col items-center p-2 gap-4">
       <h1 className="text-3xl">Post</h1>
 
-      <div className="flex flex-col gap-2 my-4">
-        <h2>
-          {post?.id}: {post?.title}
-        </h2>
-
-        <p>{post?.body}</p>
-      </div>
+      {post && <PostCard post={post} variant="FULL" />}
     </main>
   );
 }

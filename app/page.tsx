@@ -13,6 +13,7 @@ export default function Home() {
   // Queries
   const { posts, fetchNextPage, hasNextPage } = usePostsQuery();
 
+  // Custom functions
   const handleClick = () => {
     fetchNextPage();
   };
