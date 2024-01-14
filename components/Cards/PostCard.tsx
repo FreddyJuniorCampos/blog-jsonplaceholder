@@ -5,7 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { Post } from "@/interfaces/posts";
 import { CommentsSection } from "../Sections";
 import { PostActions } from "../SmallComponents";
@@ -33,8 +33,8 @@ export const PostCard = ({
   return (
     <Card
       sx={{
-        bgcolor: "rgb(30 41 59)",
-        color: "rgb(226 232 240)",
+        bgcolor: "primary.main",
+        color: "primary.contrastText",
         maxWidth: variant === "DEFAULT" ? 320 : 740,
       }}
     >
@@ -54,7 +54,13 @@ export const PostCard = ({
 
       <CardActions disableSpacing>
         {variant === "DEFAULT" && handleLearnMore && (
-          <Button size="small" onClick={handleLearnMore}>
+          <Button
+            sx={{
+              color: "info.main",
+            }}
+            size="small"
+            onClick={handleLearnMore}
+          >
             Learn More
           </Button>
         )}

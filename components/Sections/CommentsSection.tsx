@@ -29,10 +29,9 @@ const Comment = ({ comment }: CommentProps) => {
           </Avatar>
         }
         title={name}
-        className="text-slate-300"
         subheader={`@${email}`}
         subheaderTypographyProps={{
-          color: "#92c5fd",
+          color: "info.main",
         }}
       />
       <CardContent>
