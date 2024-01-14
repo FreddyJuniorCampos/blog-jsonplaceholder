@@ -19,11 +19,11 @@ const VARIANTS_CARD = {
 interface PostCardProps {
   post: Post;
   variant?: (typeof VARIANTS_CARD)[keyof typeof VARIANTS_CARD];
-  handleLearnMore?: () => void;
+  handleSeeMore?: () => void;
 }
 
 export const PostCard = ({
-  handleLearnMore,
+  handleSeeMore,
   post,
   variant = "DEFAULT",
 }: PostCardProps) => {
@@ -55,15 +55,15 @@ export const PostCard = ({
       <PostActions />
 
       <CardActions disableSpacing>
-        {variant === "DEFAULT" && handleLearnMore && (
+        {variant === "DEFAULT" && handleSeeMore && (
           <Button
             sx={{
               color: "info.main",
             }}
             size="small"
-            onClick={handleLearnMore}
+            onClick={handleSeeMore}
           >
-            Learn More
+            See More
           </Button>
         )}
       </CardActions>

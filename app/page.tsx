@@ -34,7 +34,7 @@ export default function Home() {
           >
             <PostCard
               post={post}
-              handleLearnMore={() => {
+              handleSeeMore={() => {
                 router.push(`posts/${post.id}`);
               }}
             />
