@@ -1,4 +1,5 @@
 "use client";
+import { PostCard } from "@/components/Cards";
 import { usePostByUserQuery } from "@/hooks";
 import { useParams } from "next/navigation";
 
@@ -12,16 +13,12 @@ export default function PostsByUser() {
   );
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-3xl">Posts by User</h1>
-
-      <ol className="my-4">
-        {posts?.map((item) => (
-          <li key={item.id} className="py-1">
-            {item.id}: {item.title}
-          </li>
+    <main className="flex min-h-screen flex-col items-center p-4">
+      <div className="flex flex-col gap-6">
+        {posts?.map((post) => (
+          <PostCard key={post.id} post={post} variant="FULL" />
         ))}
-      </ol>
+      </div>
     </main>
   );
 }

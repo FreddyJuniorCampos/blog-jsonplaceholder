@@ -142,7 +142,9 @@ export const Navbar = () => {
                 sx={{
                   px: 2,
                   height: 66,
-                  bgcolor: page.href === path ? "primary.dark" : "inherit",
+                  bgcolor: path.includes(page.href)
+                    ? "primary.dark"
+                    : "inherit",
                   textDecoration: "none",
                   color: "white",
                   display: "block",

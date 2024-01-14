@@ -15,8 +15,6 @@ export default function Post() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-2 gap-4">
-      <h1 className="text-3xl">Post</h1>
-
       {post && <PostCard post={post} variant="FULL" />}
     </main>
   );
