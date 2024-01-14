@@ -20,9 +20,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-2 justify-center">
-      <h1 className="text-3xl">Blog JsonPlaceholder</h1>
-
-      <Grid container py={6}>
+      <Grid container py={2}>
         {posts?.map((post) => (
           <Grid
             item

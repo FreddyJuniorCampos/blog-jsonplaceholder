@@ -5,12 +5,13 @@ export const theme = createTheme({
     primary: {
       main: "rgb(30 41 59)",
       contrastText: "rgb(226 232 240)",
+      dark: "#0f1b2e",
     },
     info: {
       main: "#0288d1",
     },
     text: {
-      primary: "rgb(203 213 225)"
-    }
+      primary: "rgb(203 213 225)",
+    },
   },
 });
