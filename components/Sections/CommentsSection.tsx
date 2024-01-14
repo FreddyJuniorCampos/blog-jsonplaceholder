@@ -1,4 +1,3 @@
-import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
@@ -23,13 +22,9 @@ const Comment = ({ comment }: CommentProps) => {
   return (
     <Box borderTop={1} borderColor="#A3A3A3" px={4}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
+        avatar={<Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" />}
         title={name}
-        subheader={`@${email}`}
+        subheader={`${email}`}
         subheaderTypographyProps={{
           color: "info.main",
         }}

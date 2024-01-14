@@ -28,7 +28,7 @@ export const PostCard = ({
   variant = "DEFAULT",
 }: PostCardProps) => {
   // Post data
-  const { body, title, comments } = post;
+  const { body, title, comments, userId } = post;
 
   return (
     <Card
@@ -40,9 +40,11 @@ export const PostCard = ({
     >
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
+          <Avatar
+            sx={{ bgcolor: red[500] }}
+            aria-label="recipe"
+            src={`/assets/user${userId ?? ""}.jpeg`}
+          />
         }
         title={title}
       />
