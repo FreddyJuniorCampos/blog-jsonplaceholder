@@ -16,7 +16,7 @@ export const getPosts = async ({
       await new Promise<void>((resolve) => {
         setTimeout(() => {
           resolve();
-        }, 1000);
+        }, 500);
       });
     }
 

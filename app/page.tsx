@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter();
 
   // Queries
-  const { posts, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
+  const { posts, fetchNextPage, isLoading, isFetchingNextPage } =
     usePostsQuery();
 
   // Custom functions
