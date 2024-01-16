@@ -126,7 +126,7 @@ export const Navbar = () => {
             {pages.map((page) => (
               <Link href={page.href} key={page.label}>
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.label}</Typography>
+                  <Typography textAlign="center" color="white">{page.label}</Typography>
                 </MenuItem>
               </Link>
             ))}

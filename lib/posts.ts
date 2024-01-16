@@ -11,6 +11,15 @@ export const getPosts = async ({
   limit?: number;
 }) => {
   try {
+    // add a delay in the request to show the infinite query
+    if (page > 1) {
+      await new Promise<void>((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+    }
+
     const { data } = await axiosInstance({
       url: "/posts",
       method: "GET",

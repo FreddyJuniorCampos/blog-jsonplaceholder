@@ -1,22 +1,28 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-import { CircularProgress, Grid } from "@mui/material";
+import { Box, CircularProgress, Grid } from "@mui/material";
 
 import { PostCard } from "@/components/Cards";
-import { usePostsQuery } from "@/hooks";
+import { usePostsQuery, useScrollDetector } from "@/hooks";
 
 export default function Home() {
   // Router
   const router = useRouter();
 
   // Queries
-  const { posts, fetchNextPage, hasNextPage, isLoading } = usePostsQuery();
+  const { posts, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
+    usePostsQuery();
 
   // Custom functions
-  const handleClick = () => {
-    fetchNextPage();
+  const handleNearBottom = () => {
+    if (!isFetchingNextPage) {
+      fetchNextPage();
+    }
   };
+
+  // Custom hooks
+  useScrollDetector({ handleNearBottom });
 
   return (
     <main className="flex min-h-screen flex-col items-center p-2 justify-center">
@@ -45,13 +51,17 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
-          <button
-            className="bg-blue-500 px-4 py-2 rounded-sm hover:opacity-90 disabled:bg-gray-500 disabled:cursor-not-allowed disabled:opacity-100"
-            disabled={!hasNextPage}
-            onClick={handleClick}
-          >
-            Click me
-          </button>
+
+          {isFetchingNextPage && (
+            <Box
+              sx={{
+                marginTop: 2,
+                marginBottom: 10,
+              }}
+            >
+              <CircularProgress color="info" />
+            </Box>
+          )}
         </>
       )}
     </main>
