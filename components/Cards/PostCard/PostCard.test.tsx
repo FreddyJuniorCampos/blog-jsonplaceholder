@@ -1,9 +1,4 @@
-import {
-  render,
-  fireEvent,
-  screen,
-  RenderResult,
-} from "@testing-library/react";
+import { render, fireEvent, RenderResult } from "@testing-library/react";
 
 import { PostCard } from "./PostCard";
 
@@ -16,6 +11,28 @@ const postMock = {
 };
 
 describe("<PostCard variant='DEFAULT' />", () => {
+  const mockHandler = jest.fn();
+
+  test("click button", () => {
+    const component = render(
+      <PostCard post={postMock} handleSeeMore={mockHandler} variant="DEFAULT" />
+    );
+    const button = component.getByText("See More");
+
+    fireEvent.click(button);
+
+    expect(mockHandler).toHaveBeenCalledTimes(1);
+  });
+
+  test("Don't show button if handler isn't passed by pros ", () => {
+    const component = render(<PostCard post={postMock} variant="DEFAULT" />);
+    const button = component.queryByText("See More");
+
+    expect(button).toBeNull();
+  });
+});
+
+describe("<PostCard variant='FULL' />", () => {
   let component: RenderResult<
     typeof import("@testing-library/dom/types/queries"),
     HTMLElement,
@@ -23,12 +40,12 @@ describe("<PostCard variant='DEFAULT' />", () => {
   >;
 
   beforeEach(() => {
-    component = render(
-      <PostCard post={postMock} handleSeeMore={() => {}} variant="DEFAULT" />
-    );
+    component = render(<PostCard post={postMock} variant="FULL" />);
   });
 
-  test("show button See More", () => {
-    expect(component.getByText("See More"));
+  test("Don't show button if variant === FULL", () => {
+    const button = component.queryByText("See More");
+
+    expect(button).toBeNull();
   });
 });
