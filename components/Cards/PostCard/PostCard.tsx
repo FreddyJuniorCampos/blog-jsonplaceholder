@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { Button } from "@mui/material";
 import { Post } from "@/interfaces/posts";
-import { CommentsSection } from "../Sections";
-import { PostActions } from "../SmallComponents";
+import { CommentsSection } from "../../Sections";
+import { PostActions } from "../../SmallComponents";
 
 // Variants of Card
 const VARIANTS_CARD = {

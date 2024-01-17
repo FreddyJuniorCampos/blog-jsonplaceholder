@@ -12,11 +12,11 @@ interface CommentsSectionProps {
   comments: Comment[];
 }
 
-interface CommentProps {
+interface CommentDetailProps {
   comment: Comment;
 }
 
-const Comment = ({ comment }: CommentProps) => {
+const CommentDetail = ({ comment }: CommentDetailProps) => {
   const { body, email, name } = comment;
 
   return (
@@ -42,7 +42,7 @@ export const CommentsSection = ({ comments }: CommentsSectionProps) => {
   return (
     <Box>
       {comments?.map((comment) => (
-        <Comment key={comment.id} comment={comment} />
+        <CommentDetail key={comment.id} comment={comment} />
       ))}
     </Box>
   );
